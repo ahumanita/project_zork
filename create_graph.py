@@ -101,7 +101,7 @@ def get_paths() :
 		i += 1
 	return path_list
 
-def write_areas_to_graph(area_list,graph,node_color) :
+def write_areas_to_graph(area_list,graph) :
 	total = len(area_list)
 	for area in area_list :
 		if not area["light"]:
@@ -131,7 +131,7 @@ def write_areas_to_graph(area_list,graph,node_color) :
 
 		graph.node(str(area["id"]), str(area["id"]) + " " + str(area["name"] + "\n" + info),color=color)
 
-def write_paths_to_graph(path_list,graph,edge_color) :
+def write_paths_to_graph(path_list,graph) :
 	total = len(path_list)
 	for path in path_list :
 		info = ""
@@ -143,10 +143,11 @@ def write_paths_to_graph(path_list,graph,edge_color) :
 if __name__ == "__main__" :
 	fln = "graph.svg"
 	graph = Digraph(format="svg")
+	graph.graph_attr["rankdir"] = "LR"
 
 	area_list = get_areas()
 	path_list = get_paths()
-	write_areas_to_graph(area_list,graph,node_color)
-	write_paths_to_graph(path_list,graph,edge_color)
+	write_areas_to_graph(area_list,graph)
+	write_paths_to_graph(path_list,graph)
 
 	graph.render("graph.gv",view=True)
