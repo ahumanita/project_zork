@@ -1,0 +1,10 @@
+*.txt
+*.log
+*.aux
+*.pdf
+*.png
+*.swp
+*.tex
+graph_test.py
+get_data.py
+*.gv
